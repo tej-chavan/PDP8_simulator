@@ -3,7 +3,7 @@ module FPLOAD_test ();
 
 reg [31:0] FP_AC;
 
-  reg [11:0] Mem [2:0] ;//= '{12'h000,12'hA00,12'h081} ; // 4K memory
+  reg [11:0] Mem [2:0] ;//= '{12'h000,12'hA00,12'h081} ; 
 
 	bit [1:0] PC;
 
@@ -20,7 +20,7 @@ reg [31:0] FP_AC;
 
 initial
 begin
-	FP_AC = 32'hC0A00000;
+	FP_AC = 32'hC0A00000; //-5.0
 	FP_STOR();
 	$display("Hex = %h, and in Oct L1 : %o \n Oct L2 : %o \n Oct L3 : %o \n",FP_AC,Mem[0],Mem[1],Mem[2]);
 end

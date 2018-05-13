@@ -3,7 +3,7 @@ module FPLOAD_test ();
 
 reg [31:0] FP_AC;
 
-  reg [11:0] Mem [2:0] = '{12'h000,12'hA00,12'h081} ; // 4K memory
+  reg [11:0] Mem [2:0] = '{12'h000,12'hA00,12'h081} ; //-5;
 
 	bit [1:0] PC;
 
