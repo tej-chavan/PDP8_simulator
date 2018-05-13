@@ -17,7 +17,6 @@ reg [31:0] FP_AC;
 		end
 	endtask
 
-
 initial
 begin
 	FP_AC = 32'hC0A00000; //-5.0
