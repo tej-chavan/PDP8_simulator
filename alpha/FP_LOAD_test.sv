@@ -16,7 +16,6 @@ reg [31:0] FP_AC;
 		end
 	endtask
 
-
 initial
 begin
 	FPLOAD();
