@@ -35,6 +35,7 @@ module PDP8();
 
 
 `define WORD_SIZE 12			// 12-bit word
+`define FP_SIZE 32			// 12-bit word
 `define MEM_SIZE  4096			// 4K memory
 `define OBJFILENAME "pdp8.mem"	// input file with object code
 
@@ -49,6 +50,7 @@ reg [0:`WORD_SIZE-1] AC;		// accumulator
 reg [0:`WORD_SIZE-1] SR;		// front panel switch register
 reg [0:`WORD_SIZE-1] MA;		// memory address regist
 reg        	      L;			// Link register
+reg [0:`FP_SIZE-1:0] FP_AC;
 
 reg [0:4]  CPage;				// Current page
 
@@ -69,6 +71,19 @@ reg Run;						// Run while 1
 `define PageAddress	IR[5:11]	// Page Offset
 
 
+parameter DEVISE_ID 'o55;
+
+//
+// FP opcode
+//
+
+parameter
+	FPCLAC	 = 0,
+	FPLOAD 	 = 1,
+	FPSTOR	 = 2,
+	FPADD    = 3,
+	FPMULT   = 4;
+
 //
 // Opcodes
 //
@@ -83,8 +98,13 @@ parameter
 	IOT = 6,
 	OPR = 7;
 
+//
+//IOT Microinstructions
+//
 
 
+`define DEV			IR[3:8]			// Devise ID
+`define E_OP		IR[9:11]			// OPCODE
 
 //
 // Microinstructions
@@ -195,6 +215,10 @@ task Execute;
 			end
 			
 	IOT:	begin		// treat as NOP
+			if(DEV==DEVISE_ID)
+			case (E_OP)
+			FPLOAD: FPLOAD();
+			endcase
 			$display("IOT instruction at PC = %0o",PC-1," ignored");
 			end
 			
@@ -428,5 +452,16 @@ initial
   $display("Average CPI        = %4.2f\n",100.0 * TotalClocks/(TotalIC * 100.0));	
   end
 
+
+//FP 
+
+	task FPLOAD;
+		begin
+			//Decode
+			FP_AC[31] 	  = Mem[PC+1][11];
+			FP_AC[30:23]  = Mem[PC][7:0];
+			FP_AC[22:0]   = {Mem[PC+1][10:0],Mem[PC+2]};
+		end
+	endtask
 
 endmodule
