@@ -1,0 +1,30 @@
+   1            fpclac=6550
+   2            fpload=6551
+   3            fpstor=6552
+   4            fpadd=6553
+   5            fpmul=6554
+   6            *0400			/ start at address 0200
+   7 00400 6551 Main,	fpload 
+   8 00401 0460 	A	        / add A to Accumulator
+   9 00402 6551 	fpload  
+  10 00403 0463 	B 	        / multiplies the contents of accumulator with B
+  11 00404 6552 	fpstor 
+  12 00405 0466 	c               / stores in the memory location pointed by c
+  13 00406 7402 	hlt 		/ Halt program
+  14 00407 5200 	jmp Main	/ To continue - goto Main
+  15            /
+  16            / Data Section
+  17            /
+  18            *0460 			/ place data at address 0250
+  19 00460 0201 A, 	201 		/ A equals -5.0
+  20 00461 5000  	5000
+  21 00462 0000  	0
+  22 00463 0210 B, 	210 		/ B equals 9.0
+  23 00464 4174  	4174
+  24 00465 0000         0
+  25            
+  26 00466 0000 C,	0
+  27 00467 0000 	0
+  28 00470 0000 	0
+  29            
+  30            $Main 			/ End of Program; Main is entry point

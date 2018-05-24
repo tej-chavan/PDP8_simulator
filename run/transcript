@@ -1,0 +1,46 @@
+# vsim -do "run -all; quit" -c PDP8 
+# Start time: 15:52:08 on May 24,2018
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# //  Questa Sim
+# //  Version 10.3 linux Jan  6 2014
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading sv_std.std
+# Loading work.PDP8(fast)
+# run -all 
+# 400  6551
+# 401  0460
+# 402  6551
+# 403  0463
+# 404  6552
+# 405  0466
+# 406  7402
+# 407  5200
+# 460  0201
+# 461  5000
+# 463  0210
+# 464  4174
+# FP LOAD: c0a00000, in float is : -5.000000
+# FP LOAD: c407c000, in float is : -543.000000
+# 3 AND instructions executed, using 9 clocks
+# 0 TAD instructions executed, using 0 clocks
+# 0 ISZ instructions executed, using 0 clocks
+# 0 DCA instructions executed, using 0 clocks
+# 0 JSM instructions executed, using 0 clocks
+# 0 JMP instructions executed, using 0 clocks
+# 3 IOT instructions executed, using 0 clocks
+# 1 OPR instructions executed, using 1 clocks
+# ---------------------------------------------------------
+# 7 Total instructions executed, using 10 clocks
+# 
+# Average CPI        = 1.43
+# 
+#  quit 
+# End time: 15:52:09 on May 24,2018
+# Errors: 0, Warnings: 0
